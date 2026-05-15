@@ -163,7 +163,7 @@
             ""
           ]
         },
-        "description": "Send a POST request to http://localhost:8000/api/persons containing JSON with the new person's data. The API returns the newly created object along with the ID it assigned to it."
+        "description": "Send a POST request to [http://localhost:8000/api/persons](http://localhost:8000/api/persons) containing JSON with the new person's data. The API returns the newly created object along with the ID it assigned to it.\n\n{  \n\"name\": \"Peter Saint\",  \n\"identificationNumber\": \"25831381\",  \n\"taxNumber\": \"CZ05361383\",  \n\"accountNumber\": \"123354789\",  \n\"bankCode\": \"5500\",  \n\"iban\": \"CZ000123456784\",  \n\"telephone\": \"+420 123 123 123\",  \n\"mail\": \"[redak3ce@itnetork.cz](https://mailto:redak3ce@itnetork.cz)\",  \n\"street\": \"Karlovo náměstí 290/16, Nové Město (Praha 2)\",  \n\"zip\": \"120 00\",  \n\"city\": \"Praha\",  \n\"country\": \"CZECHIA\",  \n\"note\": \"Nova editace\",  \n\"_id\": 14  \n}"
       },
       "response": []
     },
