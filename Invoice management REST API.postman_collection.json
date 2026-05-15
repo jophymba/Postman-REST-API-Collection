@@ -1,0 +1,280 @@
+{
+  "info": {
+    "_postman_id": "a1f09f86-dcfd-4cbb-a6d4-f3dc4ef36a53",
+    "name": "Invoice management REST API",
+    "description": "Functionality test of IT Network project for invoice managment REST API with Django(back-end) and React(front-end)\n\n<img src=\"https://content.pstmn.io/32b9e52d-2ca9-4864-8978-cd16b9b1b920/QVBJIGRva3VtZW50YWNlIGsgZGF0YWJhzIF6aSBmYWt0dXIuanBlZw==\" alt=\"\">",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "52390155",
+    "_collection_link": "https://go.postman.co/collection/52390155-a1f09f86-dcfd-4cbb-a6d4-f3dc4ef36a53?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "shows all persons",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{localhost url}}/persons",
+          "host": [
+            "{{localhost url}}"
+          ],
+          "path": [
+            "persons"
+          ]
+        },
+        "description": "Send a GET request to the address [http://localhost:8000/api/persons](http://localhost:8000/api/persons) to display all the people in the database."
+      },
+      "response": []
+    },
+    {
+      "name": "shows all invoices",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.test(\"Response time is less than 200ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(200);",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{localhost url}}/invoices/",
+          "host": [
+            "{{localhost url}}"
+          ],
+          "path": [
+            "invoices",
+            ""
+          ]
+        },
+        "description": "Send a GET request to the address http://localhost:8000/api/invoices to display all the invoices in the database."
+      },
+      "response": []
+    },
+    {
+      "name": "adding new invoice",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 201\", function () {",
+              "    pm.response.to.have.status(201);",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\"invoiceNumber\": \"\",\n    \"seller\": 1,\n    \"buyer\": 2,\n    \"issued\": \"2024-01-10\",\n    \"dueDate\": \"2024-02-10\",\n    \"product\": \"Testovací produkt\",\n    \"price\": 1000.50,\n    \"vat\": 21\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{localhost url}}/invoices/",
+          "host": [
+            "{{localhost url}}"
+          ],
+          "path": [
+            "invoices",
+            ""
+          ]
+        },
+        "description": "Send a POST request to http://localhost:8000/api/invoices containing JSON with the new invoice data. The API returns the newly created object along with the ID it assigned to it."
+      },
+      "response": []
+    },
+    {
+      "name": "adding new person",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 201\", function () {",
+              "    pm.response.to.have.status(201);",
+              "});",
+              "pm.test(\"Response time is less than 300ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(300);",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\"name\": \"Kill Bill\",\n\"identificationNumber\": \"25861381\",\n\"taxNumber\": \"CZ05861383\",\n\"accountNumber\": \"123454789\",\n\"bankCode\": \"5500\",\n\"iban\": \"CZ000123456784\",\n\"telephone\": \"+420 123 123 123\",\n\"mail\": \"redakce@itnetork.cz\",\n\"street\": \"Karlovo náměstí 290/16, Nové Město (Praha 2)\",\n\"zip\": \"120 00\",\n\"city\": \"Praha\",\n\"country\": \"CZECHIA\",\n\"note\": \"Největší machr v Česku.\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{localhost url}}/persons/",
+          "host": [
+            "{{localhost url}}"
+          ],
+          "path": [
+            "persons",
+            ""
+          ]
+        },
+        "description": "Send a POST request to http://localhost:8000/api/persons containing JSON with the new person's data. The API returns the newly created object along with the ID it assigned to it."
+      },
+      "response": []
+    },
+    {
+      "name": "change person",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "url": {
+          "raw": "{{localhost url}}/persons/",
+          "host": [
+            "{{localhost url}}"
+          ],
+          "path": [
+            "persons",
+            ""
+          ]
+        },
+        "description": "Send a PUT request to the address [http://localhost:8000/api/persons/](http://localhost:8000/api/persons/) with the person's ID, e.g. /api/persons/4"
+      },
+      "response": []
+    },
+    {
+      "name": "change invoice",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "url": {
+          "raw": "{{localhost url}}/invoices/",
+          "host": [
+            "{{localhost url}}"
+          ],
+          "path": [
+            "invoices",
+            ""
+          ]
+        },
+        "description": "Send a PUT request to the address [http://localhost:8000/api/invoices/](http://localhost:8000/api/persons/) with the invoice ID, e.g. /api/invoice/4"
+      },
+      "response": []
+    },
+    {
+      "name": "delete person",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{localhost url}}/persons/",
+          "host": [
+            "{{localhost url}}"
+          ],
+          "path": [
+            "persons",
+            ""
+          ]
+        },
+        "description": "Send a DELETE request to the address [http://localhost:8000/api/persons](http://localhost:8000/api/persons)/ with the person ID, e.g. /api/persons/5. After successful deletion, the server responds with code 204 (No Content)."
+      },
+      "response": []
+    },
+    {
+      "name": "delete invoice",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{localhost url}}/invoices/",
+          "host": [
+            "{{localhost url}}"
+          ],
+          "path": [
+            "invoices",
+            ""
+          ]
+        },
+        "description": "Send a DELETE request to the address [http://localhost:8000/api/invoices](http://localhost:8000/api/persons)/ with the invoice ID, e.g. /api/invoices/5. After successful deletion, the server responds with code 204 (No Content)."
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          "pm.test(\"Response time is less than 200ms\", function () {",
+          "    pm.expect(pm.response.responseTime).to.be.below(200);",
+          "});"
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "localhost url",
+      "value": "",
+      "description": "Url to to Django REST server at localhost 8000"
+    }
+  ]
+}
