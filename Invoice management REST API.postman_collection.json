@@ -9,7 +9,7 @@
   },
   "item": [
     {
-      "name": "shows all persons",
+      "name": "show all persons",
       "event": [
         {
           "listen": "test",
@@ -42,7 +42,7 @@
       "response": []
     },
     {
-      "name": "shows all invoices",
+      "name": "show all invoices",
       "event": [
         {
           "listen": "test",
@@ -79,7 +79,41 @@
       "response": []
     },
     {
-      "name": "adding new invoice",
+      "name": "show specific person",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{localhost url}}/persons/",
+          "host": [
+            "{{localhost url}}"
+          ],
+          "path": [
+            "persons",
+            ""
+          ]
+        },
+        "description": "Send a GET request to the address with the person's ID, e.g. /api/persons/4."
+      },
+      "response": []
+    },
+    {
+      "name": "add new invoice",
       "event": [
         {
           "listen": "test",
@@ -117,12 +151,12 @@
             ""
           ]
         },
-        "description": "Send a POST request to http://localhost:8000/api/invoices containing JSON with the new invoice data. The API returns the newly created object along with the ID it assigned to it."
+        "description": "Send a POST request to [http://localhost:8000/api/invoices](http://localhost:8000/api/invoices) containing JSON with the new invoice data. The API returns the newly created object along with the ID it assigned to it."
       },
       "response": []
     },
     {
-      "name": "adding new person",
+      "name": "add new person",
       "event": [
         {
           "listen": "test",
@@ -146,7 +180,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\n\"name\": \"Kill Bill\",\n\"identificationNumber\": \"25861381\",\n\"taxNumber\": \"CZ05861383\",\n\"accountNumber\": \"123454789\",\n\"bankCode\": \"5500\",\n\"iban\": \"CZ000123456784\",\n\"telephone\": \"+420 123 123 123\",\n\"mail\": \"redakce@itnetork.cz\",\n\"street\": \"Karlovo náměstí 290/16, Nové Město (Praha 2)\",\n\"zip\": \"120 00\",\n\"city\": \"Praha\",\n\"country\": \"CZECHIA\",\n\"note\": \"Největší machr v Česku.\"\n}",
+          "raw": "{\n\"name\": \"ITnetwork s.r.o.\",\n\"identificationNumber\": \"05861381\",\n\"taxNumber\": \"CZ05861381\",\n\"accountNumber\": \"123456789\",\n\"bankCode\": \"5500\",\n\"iban\": \"CZ000123456789\",\n\"telephone\": \"+420 123 123 123\",\n\"mail\": \"redakce@itnetwork.cz\"\n,\n\"street\": \"Karlovo náměstí 290/16, Nové Město (Praha 2)\",\n\"zip\": \"120 00\",\n\"city\": \"Praha\",\n\"country\": \"CZECHIA\",\n\"note\": \"Největší IT akademie v Česku.\"\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -202,6 +236,23 @@
           ]
         },
         "description": "Send a PUT request to the address [http://localhost:8000/api/invoices/](http://localhost:8000/api/persons/) with the invoice ID, e.g. /api/invoice/4"
+      },
+      "response": []
+    },
+    {
+      "name": "update person",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "{{localhost url}}/persons",
+          "host": [
+            "{{localhost url}}"
+          ],
+          "path": [
+            "persons"
+          ]
+        }
       },
       "response": []
     },
